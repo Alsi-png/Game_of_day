@@ -55,7 +55,7 @@ class Stats:
 
 # Giving other stats, with what a player can play around.
     def __str__(self):
-        return f'''Your stats are randomized, for extra fun:
+        return f'''Your stats:
         HitPoints: {self.hp}
         StaminaPoints: {self.sp}
         Intelligence: {self.intel}
@@ -68,11 +68,11 @@ class Stats:
 # Introduction in the game.
 print('''Hello!
 
-Here in this game you will try to gain as many stats to the maximum of 10 points.
+Here in this game you will try to gain as many stat points as possible in given time.
 Every step that you take, uses a specific amount of time, specific amount of HP and SP.
 To restore HP, eat and to restore SP, rest. Simple enough?
 Don`t forget, you get tired after 12 hours and will go to sleep.
-In next run your characteristics will randomize again.
+In next run your characteristics will be randomized again.
 
 Good luck in your run!
 ''')
@@ -191,12 +191,13 @@ while time_of_day <= time_to_sleep:
 
 # End of the game and showcase of what a player achieved.
 if time_of_day >= time_to_sleep:
-
-    Player = Character()
-    Player_stats = Stats()
     print(Player)
     print(Player_stats)
-
     print('''
-    
     What a nice day, Good night! Lets get better next day!''')
+    file = open('save_progress.txt', 'a')
+    file.write(str(Player) + '   ' + str(Player_stats))
+    file.close()
+
+    # file = open('save_progress.txt', 'r')
+    # print(file.read())
